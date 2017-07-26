@@ -22,7 +22,6 @@
 |:SetOnBuy(function(pl, bGlobal, iInvID) end)|Выполняется на сервере после покупки итема в инвентарь|
 |:SetCanActivate(function(pl, global, invDbID) end)|Позволяет установить условие при котором игроки не смогут активировать товар из инвентаря.|
 |:SetOnActivate(function(pl) end)|Выполняется на сервере перед активацией итема из инвентаря|
-|:SetOnRemove(function(s64) end)|Выполнится на сервере, когда срок годности услуги истечет|
 |:SetValidator(function(pl) end)|Выполняется при входе игрока на сервер.<br><br>Если условие возращает false выполняется :SetOnActivate|
 
 ### Методы связанные с ULX
