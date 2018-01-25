@@ -18,7 +18,7 @@
 |:SetIcon("**http://site/img.png**")|Устанавливает **Иконку** в соотношении 1:1. Рекомендуемый размер 100 px|
 |:SetHighlightColor(col)|Устанавливает **цвет текста** названию услуги|
 |:SetStackable(true)|**Разрешает покупку нескольких штук** (например, накопительные услуги, типа лимита пропов). **Использовать с SetTerm() ~= 0**|
-|:SetNetworked(true)|Позволяет другим клиентам (игрокам) читать информацию об этой покупке (для шарящих разработчиков) (**CL IGS.PlayerPurchases(ply)**)|
+|:SetNetworked(true)|Если игрок купил итем с этим методом, то он будет виден в **IGS.PlayerPurchases(LocalPlayer())** для этого игрока (другие итем не увидят. Для этого другое средство)|
 |:SetCanBuy(function(pl, bGlobal) end)|Позволяет установить условие при котором игроки не смогут покупать товар.<br><br>**Пример:**<br><br>:SetCanBuy(function(pl, bGlobal)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not pl:isPremium() then<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Чтобы купить это нужен премиум!"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br> end)
 |:SetOnBuy(function(pl, bGlobal, iInvID) end)|Выполняется на сервере после покупки итема в инвентарь|
 |:SetCanActivate(function(pl, global, invDbID) end)|Позволяет установить условие при котором игроки не смогут активировать товар из инвентаря.|
