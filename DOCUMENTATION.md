@@ -24,17 +24,17 @@
 |:SetCanActivate(function(pl, global, invDbID) end)|Позволяет установить условие при котором игроки не смогут активировать товар из инвентаря.|
 |:SetOnActivate(function(pl) end)|Выполняется на сервере перед активацией итема из инвентаря|
 |:SetValidator(function(pl) end)|Выполняется при входе игрока на сервер.<br><br>Если условие возращает false выполняется :SetOnActivate|
-
+|:SetMaxPurchases(num)|Устанавливает максимальное количество покупок услуги для игрока.<br><br>**Пример:**<br>При SetMaxPurchases(1) игрок сможет купить эту услугу только один раз.|
 ### Методы связанные с ULX
 |Метод|Описание|
 |----|----|
-|:SetULXGroup(group)|Нужно указать, если итем является донат группой в ULX.|
+|:SetULXGroup(group, weight)|Нужно указать, если итем является донат группой в ULX.<br><br>В weight можно указать число. Если у игрока куплено несколько групп, то будет выдана группа с самым большим weight|
 |:SetULXCommandAccess(cmd)|Дает доступ к ULX команде на определенный срок.<br><br>**Пример:**<br>:SetULXCommandAccess("ulx model")|
 
 ### Методы связанные с FAdmin
 |Метод|Описание|
 |----|----|
-|:SetFAdminGroup(group)|Нужно указать, если итем является донат группой в FAdmin.|
+|:SetFAdminGroup(group, weight)|Нужно указать, если итем является донат группой в FAdmin.<br><br>В weight можно указать число. Если у игрока куплено несколько групп, то будет выдана группа с самым большим weight|
 
 ### Методы связанные с Evolve
 |Метод|Описание|
@@ -103,6 +103,8 @@
 |----|----|----|
 |IGS.OnActivate|player _client_<br>table _ITEM_|Вызывается после успешной активации итема с инвентаря. Можно использовать для выдачи дополнительных бонусов|
 |IGS.OnError. + method|string _error_<br>table _parameters_|Для опытных.<br>Вызывается в fetch.lua.<br> Предназначен для перехвата ошибок с определенных методов. <br><br>**Пример перехвата:**<br><br>hook.Add("IGS.OnError.servers.get", "servers.get.catchError", function(error, parameters)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Ошибка: " .. error .. "\n Переданные параметры: " .. parameters .. "\n");<br> end)|
+|IGS.CanPlayerActivateItem|player _client_<br>table _ITEM_<br>boolean _global_<br>int _invID_|Вызывается при активации игроком услуги. Должен возвращать true или false в зависимости от того, может ли игрок активировать услугу. Если возвращен false, надо указать причину.<br><br>**Пример:**<br>hook.Add("IGS.CanPlayerActivateItem", "OnlyAdminActivate", function(pl, item, global, invid)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if item:UID() == "admin_super_item" and !pl:IsAdmin() then<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false, "Активация возможна только для админов!" <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>end)|
+|IGS.CanPlayerBuyItem|player _client_<br>table _ITEM_<br>boolean _global_<br>int _invID_|Вызывается при покупки игроком услуги. Должен возвращать true или false в зависимости от того, может ли игрок купить услугу. Если возвращен false, надо указать причину.<br><br>**Пример:**<br>hook.Add("IGS.CanPlayerBuyItem", "OnlyAdminBuy", function(pl, item, global, invid)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if item:UID() == "admin_super_item" and !pl:IsAdmin() then<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false, "Покупка возможна только для админов!" <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>end)|
 
 ### CLIENT: 
 |Хук|Аргументы|Описание|
