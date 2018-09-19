@@ -94,7 +94,7 @@
 |IGS.Initialized|Без аргументов|Вызывается после полной загрузки скрипта|
 |IGS.OnSuccessPurchase|player _client_<br>table _ITEM_<br>boolean _isGlobal_<br>int _itemID_|Вызывается после успешной покупки предмета в магазине|
 |IGS.OnFailedPurchase|player _client_<br>table _ITEM_<br>boolean _isGlobal_<br> string _error_|Вызывается после неудачной покупки предмета в магазине. Например, недостаточно денег или не прошла проверка :CanBuy|
-|IGS.PaymentStatusUpdated|(player _client_<br>table _status_| Вызывается после обновления статуса пополнения счета.<br>На клиенте первый аргумент (игрок) не передается. <br><br>Вид данных: https://img.qweqwe.ovh/1494089756498.png<br><br>**pay** - Деньги переведены.<br>**error** - Какая-то ошибка.<br>**check** - Игрок перешел к оплате| 
+|IGS.PaymentStatusUpdated|player _client_<br>table _status_| Вызывается после обновления статуса пополнения счета.<br>На клиенте первый аргумент (игрок) не передается. <br><br>Вид данных: https://img.qweqwe.ovh/1494089756498.png<br><br>**pay** - Деньги переведены.<br>**error** - Какая-то ошибка.<br>**check** - Игрок перешел к оплате| 
 |IGS.PlayerPurchasesLoaded|player _client_<br>table _purchases_|После входа игрока на сервер с нашей системы начинают загружаться его покупки.<br>После завершения вызывается этот хук.<br>На клиенте первый аргумент (игрок) не передается. |
 |IGS.OnSettingsUpdated|Без аргументов|Вызывается после получения или обновления данных для корректной работы функций IGS.GetMinCharge() и IGS.GetCurrencyPrice()|
 
