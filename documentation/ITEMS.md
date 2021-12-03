@@ -17,6 +17,7 @@
 |:SetImage("**http://site/img.png**")|Устаналивает ссылку на "**баннер**" услуги. Рекомендуемый размер 1000х400 или в этом соотношении. Отобразиться в инфе о товаре |
 |:SetIcon("**http://site/img.png**")|Устанавливает **Иконку** в соотношении 1:1. Рекомендуемый размер 100 px|
 |:SetHighlightColor(col)|Устанавливает **цвет текста** названию услуги|
+|:SetDiscountedFrom(iOldPrice)|Устанавливает **старую цену** у услуги. Она будет отображаться зачеркнутой|
 |:SetStackable(true)|**Разрешает покупку нескольких штук** (например, накопительные услуги, типа лимита пропов). **Использовать с SetTerm() ~= 0**|
 |:SetNetworked(true)|Если игрок купил итем с этим методом, то он будет виден в **IGS.PlayerPurchases(LocalPlayer())** для этого игрока (другие итем не увидят. Для этого другое средство)|
 |:SetCanBuy(function(pl, bGlobal) end)|Позволяет установить условие при котором игроки не смогут покупать товар.<br><br>**Пример:**<br><br>:SetCanBuy(function(pl, bGlobal)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if not pl:isPremium() then<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "Чтобы купить это нужен премиум!"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br> end)
