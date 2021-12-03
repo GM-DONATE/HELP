@@ -2,6 +2,7 @@
 
 * [Итемы](ITEMS.md)
 * [Группы итемов](GROUPS.md)
+* [Уровни](LEVELS.md)
 * [Хуки](HOOKS.md)
 * [Функции](FUNCTIONS.md)
 
